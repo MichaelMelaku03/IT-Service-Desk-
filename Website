@@ -13,50 +13,439 @@ html = r'''<!DOCTYPE html>
   --green:#067647;--green-bg:#ecfdf3;--amber:#b54708;--amber-bg:#fffaeb;
   --shadow:0 12px 35px rgba(16,24,40,.08);--radius:18px;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
-nav{position:sticky;top:0;z-index:20;background:rgba(247,249,252,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(228,231,236,.8)}
-.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;letter-spacing:-.03em}.logo span{color:var(--blue)}
-.nav-links{display:flex;gap:28px;color:#475467;font-size:14px;font-weight:600}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6
+}
+
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(247,249,252,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(228,231,236,.8)
+}
+
+.nav-inner{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.logo{
+  font-weight:800;
+  letter-spacing:-.03em
+}
+
+.logo span{color:var(--blue)}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  color:#475467;
+  font-size:14px;
+  font-weight:600
+}
+
 .nav-links a:hover{color:var(--blue)}
-.hero{padding:110px 0 90px;background:linear-gradient(180deg,#fff 0%,#f7f9fc 100%)}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center}
-.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid #d0d5dd;border-radius:999px;background:#fff;color:#344054;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-h1{font-size:clamp(46px,6vw,76px);line-height:1.02;letter-spacing:-.065em;margin:22px 0}
-.hero p{font-size:19px;color:var(--muted);max-width:650px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:11px;font-weight:750;font-size:14px;border:1px solid var(--line);background:#fff}
-.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.primary:hover{background:var(--blue-dark)}
-.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(16,24,40,.08)}
-.dashboard{background:#101828;color:#fff;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
-.dash-top{display:flex;justify-content:space-between;color:#98a2b3;font-size:12px;margin-bottom:25px}
-.dash-title{font-size:20px;font-weight:800;margin-bottom:22px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stat{background:#1d2939;border-radius:12px;padding:14px}.stat strong{display:block;font-size:24px}.stat small{color:#98a2b3}
-.tickets{margin-top:18px;display:grid;gap:8px}.ticket{background:#182230;padding:12px;border-radius:10px;font-size:12px;display:flex;justify-content:space-between;gap:10px}.pill{padding:3px 7px;border-radius:999px;font-weight:800;font-size:10px}.resolved{background:#d1fadf;color:#05603a}.investigating{background:#fef0c7;color:#93370d}
-section{padding:90px 0}.section-head{max-width:700px;margin-bottom:40px}.section-head h2{font-size:42px;letter-spacing:-.05em;line-height:1.1;margin:0 0 12px}.section-head p{color:var(--muted);font-size:17px}
-.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.skill{background:var(--surface);border:1px solid var(--line);padding:25px;border-radius:var(--radius)}.skill h3{margin:0 0 6px}.skill p{margin:0;color:var(--muted);font-size:14px}
-.project-wrap{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
-.project-intro{padding:38px;border-bottom:1px solid var(--line)}.project-intro h3{font-size:28px;margin:0 0 8px}.project-intro p{color:var(--muted);max-width:750px}
-.ticket-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:28px}
-.ticket-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff;cursor:pointer;transition:.2s}.ticket-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,24,40,.07)}
-.ticket-card .code{font-size:12px;font-weight:850;color:var(--blue);letter-spacing:.05em}.ticket-card h4{font-size:18px;margin:7px 0}.ticket-card p{color:var(--muted);font-size:13px;margin:0 0 14px}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:11px;border:1px solid var(--line);padding:4px 8px;border-radius:999px;color:#475467}
-.details{display:none;border-top:1px solid var(--line);margin-top:18px;padding-top:18px}.ticket-card.open .details{display:block}.details strong{font-size:12px}.details p{margin:5px 0 13px}
-.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:24px;background:#fff;border:1px solid var(--line);border-radius:16px}.step-num{font-size:12px;color:var(--blue);font-weight:850}.step h3{margin:8px 0}.step p{margin:0;color:var(--muted);font-size:14px}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}.about-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px}.about-card p{color:var(--muted)}
-.resume-box{background:#101828;color:#fff;border-radius:24px;padding:45px;display:flex;align-items:center;justify-content:space-between;gap:30px}.resume-box p{color:#98a2b3;margin:6px 0 0}
-footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-footer .foot{display:flex;justify-content:space-between;gap:20px}
-@media(max-width:800px){.hero-grid,.about{grid-template-columns:1fr}.skills{grid-template-columns:1fr 1fr}.ticket-grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr 1fr}.hero{padding-top:75px}.nav-links{gap:12px}.nav-links a:nth-child(3){display:none}}
-@media(max-width:520px){.skills,.workflow{grid-template-columns:1fr}.nav-links{font-size:12px}.nav-inner{height:62px}.resume-box{padding:30px;display:block}.resume-box .btn{margin-top:18px}h1{font-size:46px}}
+
+.hero{
+  padding:110px 0 90px;
+  background:linear-gradient(180deg,#fff 0%,#f7f9fc 100%)
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:70px;
+  align-items:center
+}
+
+.eyebrow{
+  display:inline-flex;
+  padding:7px 11px;
+  border:1px solid #d0d5dd;
+  border-radius:999px;
+  background:#fff;
+  color:#344054;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+
+h1{
+  font-size:clamp(46px,6vw,76px);
+  line-height:1.02;
+  letter-spacing:-.065em;
+  margin:22px 0
+}
+
+.hero p{
+  font-size:19px;
+  color:var(--muted);
+  max-width:650px
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 18px;
+  border-radius:11px;
+  font-weight:750;
+  font-size:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  transition:.2s
+}
+
+.btn.primary{
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue)
+}
+
+.btn.primary:hover{
+  background:var(--blue-dark)
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(16,24,40,.08)
+}
+
+.dashboard{
+  background:#101828;
+  color:#fff;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow)
+}
+
+.dash-top{
+  display:flex;
+  justify-content:space-between;
+  color:#98a2b3;
+  font-size:12px;
+  margin-bottom:25px
+}
+
+.dash-title{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:22px
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px
+}
+
+.stat{
+  background:#1d2939;
+  border-radius:12px;
+  padding:14px
+}
+
+.stat strong{
+  display:block;
+  font-size:24px
+}
+
+.stat small{color:#98a2b3}
+
+.tickets{
+  margin-top:18px;
+  display:grid;
+  gap:8px
+}
+
+.ticket{
+  background:#182230;
+  padding:12px;
+  border-radius:10px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px
+}
+
+.pill{
+  padding:3px 7px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:10px
+}
+
+.resolved{
+  background:#d1fadf;
+  color:#05603a
+}
+
+.investigating{
+  background:#fef0c7;
+  color:#93370d
+}
+
+section{padding:90px 0}
+
+.section-head{
+  max-width:700px;
+  margin-bottom:40px
+}
+
+.section-head h2{
+  font-size:42px;
+  letter-spacing:-.05em;
+  line-height:1.1;
+  margin:0 0 12px
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:17px
+}
+
+.skills{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px
+}
+
+.skill{
+  background:var(--surface);
+  border:1px solid var(--line);
+  padding:25px;
+  border-radius:var(--radius)
+}
+
+.skill h3{margin:0 0 6px}
+
+.skill p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px
+}
+
+.project-wrap{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  overflow:hidden
+}
+
+.project-intro{
+  padding:38px;
+  border-bottom:1px solid var(--line)
+}
+
+.project-intro h3{
+  font-size:28px;
+  margin:0 0 8px
+}
+
+.project-intro p{
+  color:var(--muted);
+  max-width:750px
+}
+
+.ticket-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  padding:28px
+}
+
+.ticket-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  background:#fff;
+  cursor:pointer;
+  transition:.2s
+}
+
+.ticket-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(16,24,40,.07)
+}
+
+.ticket-card .code{
+  font-size:12px;
+  font-weight:850;
+  color:var(--blue);
+  letter-spacing:.05em
+}
+
+.ticket-card h4{
+  font-size:18px;
+  margin:7px 0
+}
+
+.ticket-card p{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 14px
+}
+
+.tags{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap
+}
+
+.tag{
+  font-size:11px;
+  border:1px solid var(--line);
+  padding:4px 8px;
+  border-radius:999px;
+  color:#475467
+}
+
+.details{
+  display:none;
+  border-top:1px solid var(--line);
+  margin-top:18px;
+  padding-top:18px
+}
+
+.ticket-card.open .details{
+  display:block
+}
+
+.details strong{
+  font-size:12px
+}
+
+.details p{
+  margin:5px 0 13px
+}
+
+.workflow{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.step{
+  padding:24px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px
+}
+
+.step-num{
+  font-size:12px;
+  color:var(--blue);
+  font-weight:850
+}
+
+.step h3{margin:8px 0}
+
+.step p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:start
+}
+
+.about-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:30px
+}
+
+.about-card p{
+  color:var(--muted)
+}
+
+.resume-box{
+  background:#101828;
+  color:#fff;
+  border-radius:24px;
+  padding:45px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px
+}
+
+.resume-box p{
+  color:#98a2b3;
+  margin:6px 0 0
+}
+
+footer{
+  padding:35px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px
+}
+
+footer .foot{
+  display:flex;
+  justify-content:space-between;
+  gap:20px
+}
+
+@media(max-width:800px){
+  .hero-grid,.about{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .ticket-grid{grid-template-columns:1fr}
+  .workflow{grid-template-columns:1fr 1fr}
+  .hero{padding-top:75px}
+  .nav-links{gap:12px}
+  .nav-links a:nth-child(3){display:none}
+}
+
+@media(max-width:520px){
+  .skills,.workflow{grid-template-columns:1fr}
+  .nav-links{font-size:12px}
+  .nav-inner{height:62px}
+  .resume-box{
+    padding:30px;
+    display:block
+  }
+  .resume-box .btn{margin-top:18px}
+  h1{font-size:46px}
+}
 </style>
 </head>
+
 <body>
 
 <nav>
   <div class="container nav-inner">
     <a class="logo" href="#">Michael <span>Melaku</span></a>
+
     <div class="nav-links">
       <a href="#project">IT Project</a>
       <a href="#skills">Skills</a>
@@ -68,193 +457,501 @@ footer .foot{display:flex;justify-content:space-between;gap:20px}
 
 <header class="hero">
   <div class="container hero-grid">
+
     <div>
       <span class="eyebrow">IT Service Desk • Technical Support</span>
+
       <h1>Practical troubleshooting. Clear documentation.</h1>
-      <p>Information Science graduate focused on beginning a career in IT support, with a self-directed troubleshooting lab covering Windows systems, software, networking, peripherals, and connectivity.</p>
+
+      <p>
+        Information Science graduate focused on beginning a career in IT support,
+        with a self-directed troubleshooting lab covering Windows systems,
+        software, networking, peripherals, and connectivity.
+      </p>
+
       <div class="buttons">
-        <a class="btn primary" href="#project">View IT Project →</a>
+        <a class="btn primary" href="file:///C:/Users/NoliG/Downloads/IT%20Service%20Desk%20Portfolio.docx.pdf">View IT Project →</a>
         <a class="btn" href="#resume">View Resume</a>
       </div>
     </div>
 
     <div class="dashboard">
-      <div class="dash-top"><span>SERVICE DESK PROJECT</span><span>2026</span></div>
+
+      <div class="dash-top">
+        <span>SERVICE DESK PROJECT</span>
+        <span>2026</span>
+      </div>
+
       <div class="dash-title">Incident Overview</div>
+
       <div class="stat-grid">
-        <div class="stat"><strong>05</strong><small>Incidents</small></div>
-        <div class="stat"><strong>04</strong><small>Resolved</small></div>
-        <div class="stat"><strong>01</strong><small>Investigating</small></div>
+        <div class="stat">
+          <strong>05</strong>
+          <small>Incidents</small>
+        </div>
+
+        <div class="stat">
+          <strong>04</strong>
+          <small>Resolved</small>
+        </div>
+
+        <div class="stat">
+          <strong>01</strong>
+          <small>Investigating</small>
+        </div>
       </div>
+
       <div class="tickets">
-        <div class="ticket"><span>INC-001 · Computer slow</span><span class="pill resolved">RESOLVED</span></div>
-        <div class="ticket"><span>INC-002 · App won't open</span><span class="pill resolved">RESOLVED</span></div>
-        <div class="ticket"><span>INC-003 · Wi-Fi issue</span><span class="pill resolved">RESOLVED</span></div>
-        <div class="ticket"><span>INC-004 · Bluetooth issue</span><span class="pill investigating">INVESTIGATING</span></div>
-        <div class="ticket"><span>INC-005 · Website access</span><span class="pill resolved">RESOLVED</span></div>
+        <div class="ticket">
+          <span>INC-001 · Computer slow</span>
+          <span class="pill resolved">RESOLVED</span>
+        </div>
+
+        <div class="ticket">
+          <span>INC-002 · App won't open</span>
+          <span class="pill resolved">RESOLVED</span>
+        </div>
+
+        <div class="ticket">
+          <span>INC-003 · Wi-Fi issue</span>
+          <span class="pill resolved">RESOLVED</span>
+        </div>
+
+        <div class="ticket">
+          <span>INC-004 · Bluetooth issue</span>
+          <span class="pill investigating">INVESTIGATING</span>
+        </div>
+
+        <div class="ticket">
+          <span>INC-005 · Website access</span>
+          <span class="pill resolved">RESOLVED</span>
+        </div>
       </div>
+
     </div>
   </div>
 </header>
 
 <section id="skills">
   <div class="container">
+
     <div class="section-head">
       <h2>What I can troubleshoot</h2>
-      <p>Core areas demonstrated through my self-directed service desk troubleshooting project.</p>
+      <p>
+        Core areas demonstrated through my self-directed service desk
+        troubleshooting project.
+      </p>
     </div>
+
     <div class="skills">
-      <div class="skill"><h3>Windows Systems</h3><p>Task Manager, Windows settings, performance monitoring and system diagnostics.</p></div>
-      <div class="skill"><h3>Software Support</h3><p>Application troubleshooting, process management, restarts and update verification.</p></div>
-      <div class="skill"><h3>Network Diagnostics</h3><p>Wi-Fi verification, browser testing, <strong>ipconfig</strong>, default gateway and <strong>ping</strong>.</p></div>
-      <div class="skill"><h3>Hardware & Peripherals</h3><p>Bluetooth discovery and peripheral troubleshooting with structured next-step planning.</p></div>
-      <div class="skill"><h3>Connectivity</h3><p>Verifying whether browsers, websites and underlying internet connectivity are functioning.</p></div>
-      <div class="skill"><h3>Technical Documentation</h3><p>Incident-style documentation organized around issue, investigation, result and skills demonstrated.</p></div>
+
+      <div class="skill">
+        <h3>Windows Systems</h3>
+        <p>
+          Task Manager, Windows settings, performance monitoring and system diagnostics.
+        </p>
+      </div>
+
+      <div class="skill">
+        <h3>Software Support</h3>
+        <p>
+          Application troubleshooting, process management, restarts and update verification.
+        </p>
+      </div>
+
+      <div class="skill">
+        <h3>Network Diagnostics</h3>
+        <p>
+          Wi-Fi verification, browser testing, <strong>ipconfig</strong>,
+          default gateway and <strong>ping</strong>.
+        </p>
+      </div>
+
+      <div class="skill">
+        <h3>Hardware & Peripherals</h3>
+        <p>
+          Bluetooth discovery and peripheral troubleshooting with structured
+          next-step planning.
+        </p>
+      </div>
+
+      <div class="skill">
+        <h3>Connectivity</h3>
+        <p>
+          Verifying whether browsers, websites and underlying internet
+          connectivity are functioning.
+        </p>
+      </div>
+
+      <div class="skill">
+        <h3>Technical Documentation</h3>
+        <p>
+          Incident-style documentation organized around issue, investigation,
+          result and skills demonstrated.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="project">
+
   <div class="container">
+
     <div class="section-head">
       <h2>Featured project</h2>
-      <p>A hands-on troubleshooting lab built to practice and demonstrate entry-level service desk workflows.</p>
+      <p>
+        A hands-on troubleshooting lab built to practice and demonstrate
+        entry-level service desk workflows.
+      </p>
     </div>
+
     <div class="project-wrap">
+
       <div class="project-intro">
         <h3>IT Service Desk Troubleshooting Lab</h3>
-        <p>Five self-directed troubleshooting scenarios covering performance triage, software support, network diagnostics, hardware/peripheral troubleshooting, and connectivity verification.</p>
+
+        <p>
+          Five self-directed troubleshooting scenarios covering performance
+          triage, software support, network diagnostics, hardware/peripheral
+          troubleshooting, and connectivity verification.
+        </p>
       </div>
 
       <div class="ticket-grid">
 
         <article class="ticket-card" onclick="toggleTicket(this)">
-          <span class="code">INC-001</span><h4>Computer Running Slowly</h4>
+          <span class="code">INC-001</span>
+          <h4>Computer Running Slowly</h4>
           <p>Performance troubleshooting on a Windows computer.</p>
-          <div class="tags"><span class="tag">Windows</span><span class="tag">Task Manager</span><span class="tag">Performance</span></div>
+
+          <div class="tags">
+            <span class="tag">Windows</span>
+            <span class="tag">Task Manager</span>
+            <span class="tag">Performance</span>
+          </div>
+
           <div class="details">
             <strong>INVESTIGATION</strong>
-            <p>Task Manager showed 92% memory utilization while CPU and disk utilization were comparatively low. Chrome tabs and background processes were consuming significant memory.</p>
+
+            <p>
+              Task Manager showed 92% memory utilization while CPU and disk
+              utilization were comparatively low. Chrome tabs and background
+              processes were consuming significant memory.
+            </p>
+
             <strong>RESULT</strong>
-            <p>Unnecessary tabs and processes were closed. Memory utilization decreased from 92% to 86%.</p>
+
+            <p>
+              Unnecessary tabs and processes were closed. Memory utilization
+              decreased from 92% to 86%.
+            </p>
+
             <strong>SKILLS</strong>
-            <p>Performance monitoring, resource analysis, root-cause troubleshooting and technical documentation.</p>
+
+            <p>
+              Performance monitoring, resource analysis, root-cause
+              troubleshooting and technical documentation.
+            </p>
           </div>
         </article>
 
         <article class="ticket-card" onclick="toggleTicket(this)">
-          <span class="code">INC-002</span><h4>Application Won't Open</h4>
+          <span class="code">INC-002</span>
+          <h4>Application Won't Open</h4>
           <p>Simulated software support issue involving Google Chrome.</p>
-          <div class="tags"><span class="tag">Software</span><span class="tag">Chrome</span><span class="tag">Processes</span></div>
+
+          <div class="tags">
+            <span class="tag">Software</span>
+            <span class="tag">Chrome</span>
+            <span class="tag">Processes</span>
+          </div>
+
           <div class="details">
             <strong>INVESTIGATION</strong>
-            <p>Chrome was fully closed, including background processes, and restarted. Its update status was also checked through the About page.</p>
+
+            <p>
+              Chrome was fully closed, including background processes, and
+              restarted. Its update status was also checked through the
+              About page.
+            </p>
+
             <strong>RESULT</strong>
-            <p>Chrome opened successfully after restarting; no underlying application issue was found.</p>
+
+            <p>
+              Chrome opened successfully after restarting; no underlying
+              application issue was found.
+            </p>
+
             <strong>SKILLS</strong>
-            <p>Application troubleshooting, process management, software maintenance and problem diagnosis.</p>
+
+            <p>
+              Application troubleshooting, process management, software
+              maintenance and problem diagnosis.
+            </p>
           </div>
         </article>
 
         <article class="ticket-card" onclick="toggleTicket(this)">
-          <span class="code">INC-003</span><h4>Wi-Fi Connectivity Test</h4>
+          <span class="code">INC-003</span>
+          <h4>Wi-Fi Connectivity Test</h4>
           <p>Verified end-to-end connectivity on a Windows computer.</p>
-          <div class="tags"><span class="tag">Networking</span><span class="tag">ipconfig</span><span class="tag">ping</span></div>
+
+          <div class="tags">
+            <span class="tag">Networking</span>
+            <span class="tag">ipconfig</span>
+            <span class="tag">ping</span>
+          </div>
+
           <div class="details">
             <strong>INVESTIGATION</strong>
-            <p>Confirmed active Wi-Fi, tested multiple websites, reviewed network configuration with ipconfig, verified a default gateway and ran ping google.com from Command Prompt.</p>
+
+            <p>
+              Confirmed active Wi-Fi, tested multiple websites, reviewed
+              network configuration with ipconfig, verified a default
+              gateway and ran ping google.com from Command Prompt.
+            </p>
+
             <strong>RESULT</strong>
-            <p>Successful replies from Google confirmed working internet connectivity end-to-end.</p>
+
+            <p>
+              Successful replies from Google confirmed working internet
+              connectivity end-to-end.
+            </p>
+
             <strong>SKILLS</strong>
-            <p>Network troubleshooting, Command Prompt, connectivity diagnostics and technical documentation.</p>
+
+            <p>
+              Network troubleshooting, Command Prompt, connectivity
+              diagnostics and technical documentation.
+            </p>
           </div>
         </article>
 
         <article class="ticket-card" onclick="toggleTicket(this)">
-          <span class="code">INC-004</span><h4>Bluetooth Device Connection</h4>
+          <span class="code">INC-004</span>
+          <h4>Bluetooth Device Connection</h4>
           <p>Investigated an AirPods discovery issue on Windows.</p>
-          <div class="tags"><span class="tag">Bluetooth</span><span class="tag">Hardware</span><span class="tag">Escalation</span></div>
+
+          <div class="tags">
+            <span class="tag">Bluetooth</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Escalation</span>
+          </div>
+
           <div class="details">
             <strong>INVESTIGATION</strong>
-            <p>Bluetooth was enabled, the AirPods were placed in pairing mode, and other nearby Bluetooth devices were detected successfully.</p>
+
+            <p>
+              Bluetooth was enabled, the AirPods were placed in pairing mode,
+              and other nearby Bluetooth devices were detected successfully.
+            </p>
+
             <strong>RESULT</strong>
-            <p>The AirPods remained undiscoverable after initial troubleshooting. Next steps included toggling Bluetooth, removing cached pairing data, updating drivers and testing the AirPods on another device.</p>
+
+            <p>
+              The AirPods remained undiscoverable after initial troubleshooting.
+              Next steps included toggling Bluetooth, removing cached pairing
+              data, updating drivers and testing the AirPods on another device.
+            </p>
+
             <strong>SKILLS</strong>
-            <p>Peripheral troubleshooting, device discovery diagnostics, Windows settings administration and escalation planning.</p>
+
+            <p>
+              Peripheral troubleshooting, device discovery diagnostics,
+              Windows settings administration and escalation planning.
+            </p>
           </div>
         </article>
 
         <article class="ticket-card" onclick="toggleTicket(this)">
-          <span class="code">INC-005</span><h4>Website Access Test</h4>
+          <span class="code">INC-005</span>
+          <h4>Website Access Test</h4>
           <p>Verified whether a Windows laptop could access a live website.</p>
-          <div class="tags"><span class="tag">Connectivity</span><span class="tag">Browser</span><span class="tag">Verification</span></div>
+
+          <div class="tags">
+            <span class="tag">Connectivity</span>
+            <span class="tag">Browser</span>
+            <span class="tag">Verification</span>
+          </div>
+
           <div class="details">
             <strong>INVESTIGATION</strong>
-            <p>Opened Chrome, navigated to Wikipedia and confirmed the site loaded fully without errors.</p>
+
+            <p>
+              Opened Chrome, navigated to Wikipedia and confirmed the site
+              loaded fully without errors.
+            </p>
+
             <strong>RESULT</strong>
-            <p>Website access was successful and connectivity was confirmed end-to-end.</p>
+
+            <p>
+              Website access was successful and connectivity was confirmed
+              end-to-end.
+            </p>
+
             <strong>SKILLS</strong>
-            <p>Web connectivity troubleshooting, browser diagnostics, problem verification and technical documentation.</p>
+
+            <p>
+              Web connectivity troubleshooting, browser diagnostics,
+              problem verification and technical documentation.
+            </p>
           </div>
         </article>
 
       </div>
+
       <div style="padding:0 28px 30px">
-        <!-- Replace the # below with your uploaded PDF's public Framer URL. -->
-        <a class="btn primary" href="#" target="_blank">View Full Project PDF →</a>
+
+        <!--
+        IMPORTANT:
+        Replace YOUR-PDF-URL-HERE with the public URL of your PDF.
+        -->
+
+        <a
+          class="btn primary"
+          href="file:///C:/Users/NoliG/Downloads/IT%20Service%20Desk%20Portfolio.docx.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Full Project PDF →
+        </a>
+
       </div>
+
     </div>
   </div>
 </section>
 
 <section>
+
   <div class="container">
+
     <div class="section-head">
       <h2>How I approach a support issue</h2>
       <p>A simple, structured troubleshooting workflow.</p>
     </div>
+
     <div class="workflow">
-      <div class="step"><span class="step-num">01</span><h3>Understand</h3><p>Identify the reported issue and establish what is actually happening.</p></div>
-      <div class="step"><span class="step-num">02</span><h3>Investigate</h3><p>Use available system, application or network diagnostics to isolate the cause.</p></div>
-      <div class="step"><span class="step-num">03</span><h3>Verify</h3><p>Apply a troubleshooting step and test whether the reported issue is resolved.</p></div>
-      <div class="step"><span class="step-num">04</span><h3>Document</h3><p>Record findings, results and next steps clearly for future reference or escalation.</p></div>
+
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Understand</h3>
+        <p>
+          Identify the reported issue and establish what is actually happening.
+        </p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Investigate</h3>
+        <p>
+          Use available system, application or network diagnostics to isolate the cause.
+        </p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Verify</h3>
+        <p>
+          Apply a troubleshooting step and test whether the reported issue is resolved.
+        </p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3>Document</h3>
+        <p>
+          Record findings, results and next steps clearly for future reference or escalation.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="about">
+
   <div class="container">
-    <div class="section-head"><h2>About me</h2></div>
+
+    <div class="section-head">
+      <h2>About me</h2>
+    </div>
+
     <div class="about">
+
       <div class="about-card">
         <h3>Michael Melaku</h3>
-        <p>I am an Information Science graduate from the University of Maryland, focused on beginning a career in IT Service Desk and Technical Support.</p>
-        <p>This portfolio is designed to show how I approach troubleshooting problems, document investigations and communicate technical results.</p>
+
+        <p>
+          I am an Information Science graduate from the University of
+          Maryland, focused on beginning a career in IT Service Desk and
+          Technical Support.
+        </p>
+
+        <p>
+          This portfolio is designed to show how I approach troubleshooting
+          problems, document investigations and communicate technical results.
+        </p>
       </div>
+
       <div class="about-card">
         <h3>Currently focused on</h3>
-        <p><strong>IT Service Desk</strong><br>Technical Support<br>Help Desk<br>Desktop Support</p>
-        <p>Open to entry-level opportunities where I can continue developing practical IT support skills.</p>
+
+        <p>
+          <strong>IT Service Desk</strong><br>
+          Technical Support<br>
+          Help Desk<br>
+          Desktop Support
+        </p>
+
+        <p>
+          Open to entry-level opportunities where I can continue developing
+          practical IT support skills.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
 <section id="resume">
+
   <div class="container">
+
     <div class="resume-box">
-      <div><h2 style="margin:0">Let's connect.</h2><p>Interested in an entry-level IT Service Desk or Technical Support opportunity.</p></div>
-      <!-- Replace # with your resume PDF URL, LinkedIn URL, or email. -->
-      <a class="btn" href="#" target="_blank">View Resume →</a>
+
+      <div>
+        <h2 style="margin:0">Let's connect.</h2>
+
+        <p>
+          Interested in an entry-level IT Service Desk or Technical Support opportunity.
+        </p>
+      </div>
+
+      <!-- Replace YOUR-RESUME-URL-HERE with your resume URL. -->
+
+      <a
+        class="btn"
+        href="YOUR-RESUME-URL-HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View Resume →
+      </a>
+
     </div>
   </div>
 </section>
 
 <footer>
+
   <div class="container foot">
     <span>© 2026 Michael Melaku</span>
     <span>IT Service Desk · Technical Support</span>
   </div>
+
 </footer>
 
 <script>
@@ -262,10 +959,15 @@ function toggleTicket(card){
   card.classList.toggle("open");
 }
 </script>
+
 </body>
 </html>
 '''
 
-path = Path("/mnt/data/michael-melaku-it-service-desk-portfolio.html")
+# IMPORTANT:
+# Change this path to where you want the HTML file saved.
+path = Path("IT-Service-Desk-Portfolio.html")
+
 path.write_text(html, encoding="utf-8")
-print(f"Created: {path}")
+
+print(f"Created: {path.resolve()}")
